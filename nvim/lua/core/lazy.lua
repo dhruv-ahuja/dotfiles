@@ -30,7 +30,7 @@ require("lazy").setup({
           -- Languages for markdown code blocks + general use
           ensure_installed = {
             -- Markdown essentials
-            "markdown", "markdown_inline",
+            "markdown", "markdown_inline", "mdx",
             -- Common programming languages (for code blocks)
             "python", "javascript", "typescript", "bash", "sh",
             "json", "yaml", "toml", "html", "css",

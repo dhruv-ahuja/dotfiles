@@ -1,6 +1,13 @@
 -- Autocmds for Markdown files
 -- Optimized for note-taking and reading
 
+-- Detect MDX files and treat them as markdown
+vim.filetype.add({
+  extension = {
+    mdx = "markdown",
+  },
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
