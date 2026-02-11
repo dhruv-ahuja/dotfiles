@@ -17,6 +17,37 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugin specifications
 require("lazy").setup({
+  -- Oxocarbon colorscheme
+  -- {
+  --   "nyoom-engineering/oxocarbon.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd("colorscheme oxocarbon")
+  --     vim.opt.background = "dark"
+  --   end,
+  -- },
+  -- Solarized Osaka
+  -- {
+  --   "craftzdog/solarized-osaka.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd("colorscheme solarized-osaka")
+  --     vim.opt.background = "dark"
+  --   end,
+  -- },
+  -- Sonokai -- currently using Sonokai as it feels great for markdown
+  {
+    "sainnhe/sonokai",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme sonokai")
+      vim.opt.background = "dark"
+    end,
+  },
+
   -- Treesitter: Superior syntax highlighting
   -- Note: Config is applied automatically by lazy.nvim after plugin loads
   {
