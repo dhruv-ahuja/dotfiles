@@ -9,3 +9,6 @@ require("core.lazy")
 
 -- Load autocmds (markdown-specific settings)
 require("core.autocmds")
+
+-- Virtual blank lines between bullet points for readability
+require("core.list_padding").setup()

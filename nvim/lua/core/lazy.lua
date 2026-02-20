@@ -125,6 +125,31 @@ require("lazy").setup({
     },
   },
 
+  -- Zen Mode: Centered, width-capped window for focused prose editing
+  {
+    "folke/zen-mode.nvim",
+    ft = { "markdown" },
+    opts = {
+      window = {
+        width = 100,        -- max line width (columns)
+        options = {
+          signcolumn = "no",
+          number = false,
+          relativenumber = false,
+          cursorline = false,
+        },
+      },
+      plugins = {
+        options = {
+          laststatus = 0,  -- hide statusline in zen mode
+        },
+      },
+    },
+    keys = {
+      { "<leader>z", "<cmd>ZenMode<cr>", desc = "Toggle Zen Mode" },
+    },
+  },
+
   -- Bullets.vim: Smart bullet list handling
   {
     "bullets-vim/bullets.vim",

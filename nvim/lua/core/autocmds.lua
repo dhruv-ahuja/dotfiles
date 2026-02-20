@@ -29,5 +29,12 @@ vim.api.nvim_create_autocmd("FileType", {
     
     -- Better list formatting
     vim.opt_local.formatoptions:append("n")
+
+    -- Auto-open Zen Mode for focused, width-capped reading
+    -- Small defer to ensure the buffer is fully loaded first
+    vim.defer_fn(function()
+      local ok, zen = pcall(require, "zen-mode")
+      if ok then zen.open() end
+    end, 50)
   end,
 })
