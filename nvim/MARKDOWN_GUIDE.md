@@ -120,7 +120,6 @@ Your config has `render-markdown.nvim` active, which means:
 ```python
 def hello():
     print("Hello, world!")
-```\u0060
 ```
 
 Type the language name after the triple backticks for syntax highlighting.
@@ -141,6 +140,7 @@ Type the language name after the triple backticks for syntax highlighting.
 `inline code`
 ~~strikethrough~~
 ```
+
 
 ### Blockquotes
 ```markdown

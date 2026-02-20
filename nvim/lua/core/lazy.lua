@@ -20,13 +20,13 @@ require("lazy").setup({
   -- Oxocarbon colorscheme
   -- {
   --   "nyoom-engineering/oxocarbon.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd("colorscheme oxocarbon")
-  --     vim.opt.background = "dark"
-  --   end,
-  -- },
+  --    lazy = false,
+  --    priority = 1000,
+  --    config = function()
+  --      vim.cmd("colorscheme oxocarbon")
+  --      vim.opt.background = "dark"
+  --    end,
+  --  },
   -- Solarized Osaka
   -- {
   --   "craftzdog/solarized-osaka.nvim",
@@ -38,14 +38,24 @@ require("lazy").setup({
   --   end,
   -- },
   -- Sonokai -- currently using Sonokai as it feels great for markdown
+  -- {
+  --   "sainnhe/sonokai",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd("colorscheme sonokai")
+  --     vim.opt.background = "dark"
+  --   end,
+  -- },
+
   {
-    "sainnhe/sonokai",
+    'rebelot/kanagawa.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd("colorscheme sonokai")
+      vim.cmd("colorscheme kanagawa")
       vim.opt.background = "dark"
-    end,
+    end
   },
 
   -- Treesitter: Superior syntax highlighting
