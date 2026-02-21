@@ -71,9 +71,9 @@ require("lazy").setup({
           -- Languages for markdown code blocks + general use
           ensure_installed = {
             -- Markdown essentials
-            "markdown", "markdown_inline", "mdx",
+            "markdown", "markdown_inline",
             -- Common programming languages (for code blocks)
-            "python", "javascript", "typescript", "bash", "sh",
+            "python", "javascript", "typescript", "bash",
             "json", "yaml", "toml", "html", "css",
             "go", "rust", "java", "c", "cpp",
             -- Neovim config languages
