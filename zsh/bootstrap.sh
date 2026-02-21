@@ -149,6 +149,7 @@ clone_plugin() {
 clone_plugin zsh-autosuggestions       https://github.com/zsh-users/zsh-autosuggestions
 clone_plugin zsh-syntax-highlighting   https://github.com/zsh-users/zsh-syntax-highlighting
 clone_plugin zsh-history-enquirer      https://github.com/zthxxx/zsh-history-enquirer
+clone_plugin zsh-completions           https://github.com/zsh-users/zsh-completions
 
 # ── 7. nvm (Node Version Manager) ────────────────────────────────────────────
 

@@ -24,6 +24,7 @@ plugins=(
   urltools
   bgnotify
   zsh-autosuggestions
+  zsh-completions        # context-aware arg completions (chmod, cp, etc.)
   zsh-syntax-highlighting
   jovial
   copyfile
@@ -182,6 +183,21 @@ fi
 
 # ── fpath + compinit (must come after fpath additions above) ──────────────────
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+# ── Completion behaviour ──────────────────────────────────────────────────────
+# Show completion menu when there are 2+ matches (press Tab twice to enter it)
+zstyle ':completion:*' menu select
+# Show descriptions/group names for completion categories
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%F{yellow}── %d ──%f'
+# Complete files case-insensitively and with partial-word matching
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Use colours in file completions (same palette as ls)
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
+# Complete . and .. explicitly
+zstyle ':completion:*' special-dirs true
+# Verbose mode: always show long descriptions
+zstyle ':completion:*' verbose true
 
 # Set fixed SSH agent socket and add keys from macOS Keychain to the agent
 export SSH_AUTH_SOCK="$HOME/.ssh/ssh-auth-sock"
