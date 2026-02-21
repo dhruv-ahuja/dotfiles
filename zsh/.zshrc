@@ -26,7 +26,6 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   jovial
-  source-highlight
   copyfile
 )
 
