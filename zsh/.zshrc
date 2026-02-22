@@ -167,8 +167,12 @@ alias gs="git stash"
 alias uvr="uv run"
 alias uvp="uvr python"
 
+# ── fpath + compinit ─────────────────────────────────────────────────────────
+# fpath must be set before compinit; compdef must be called after compinit
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
 # ── Completions (cached in ~/.zfunc — regenerate via bootstrap.sh) ────────────
-# kubectl — also wires up the `k` alias
+# kubectl — also wires up the `k` alias (compdef requires compinit above)
 if command -v kubectl &>/dev/null; then
   [[ ! -f ~/.zfunc/_kubectl ]] && kubectl completion zsh > ~/.zfunc/_kubectl
   compdef k=kubectl
@@ -178,11 +182,6 @@ fi
 if command -v uv &>/dev/null; then
   [[ ! -f ~/.zfunc/_uv ]] && uv generate-shell-completion zsh > ~/.zfunc/_uv
 fi
-
-# git — provided by Oh My Zsh git plugin (already active)
-
-# ── fpath + compinit (must come after fpath additions above) ──────────────────
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 # ── Completion behaviour ──────────────────────────────────────────────────────
 # Show completion menu when there are 2+ matches (press Tab twice to enter it)
