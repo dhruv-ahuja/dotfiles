@@ -15,6 +15,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- VSCode-Neovim uses Neovim as an editing backend while VS Code owns the UI.
+-- Plugins that draw extmarks, conceal text, resize windows, or use terminal
+-- graphics must only run in a native Neovim UI.
+local native_nvim = function()
+  return not vim.g.vscode
+end
+
 -- Plugin specifications
 require("lazy").setup({
   -- Oxocarbon colorscheme
@@ -50,6 +57,7 @@ require("lazy").setup({
 
   {
     'rebelot/kanagawa.nvim',
+    cond = native_nvim,
     lazy = false,
     priority = 1000,
     config = function()
@@ -62,6 +70,7 @@ require("lazy").setup({
   -- Note: Config is applied automatically by lazy.nvim after plugin loads
   {
     "nvim-treesitter/nvim-treesitter",
+    cond = native_nvim,
     build = ":TSUpdate",
     config = function()
       -- Protected call to avoid errors if module not loaded yet
@@ -71,9 +80,9 @@ require("lazy").setup({
           -- Languages for markdown code blocks + general use
           ensure_installed = {
             -- Markdown essentials
-            "markdown", "markdown_inline",
+            "markdown", "markdown_inline", "mdx",
             -- Common programming languages (for code blocks)
-            "python", "javascript", "typescript", "bash",
+            "python", "javascript", "typescript", "bash", "sh",
             "json", "yaml", "toml", "html", "css",
             "go", "rust", "java", "c", "cpp",
             -- Neovim config languages
@@ -93,6 +102,7 @@ require("lazy").setup({
   -- Render Markdown: Inline markdown rendering (headings, bold, lists, code blocks)
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    cond = native_nvim,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       -- Enable rendering by default
@@ -128,6 +138,7 @@ require("lazy").setup({
   -- Zen Mode: Centered, width-capped window for focused prose editing
   {
     "folke/zen-mode.nvim",
+    cond = native_nvim,
     ft = { "markdown" },
     opts = {
       window = {
@@ -153,12 +164,14 @@ require("lazy").setup({
   -- Bullets.vim: Smart bullet list handling
   {
     "bullets-vim/bullets.vim",
+    cond = native_nvim,
     ft = { "markdown", "text" },
   },
 
   -- Vim Table Mode: Easy markdown table creation
   {
     "dhruvasagar/vim-table-mode",
+    cond = native_nvim,
     ft = { "markdown" },
     config = function()
       -- Set markdown-compatible corners
@@ -179,6 +192,7 @@ require("lazy").setup({
   -- Image.nvim: Display images in markdown files
   {
     "3rd/image.nvim",
+    cond = native_nvim,
     ft = { "markdown" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
@@ -210,6 +224,7 @@ require("lazy").setup({
   -- Image paste: Paste images from clipboard into markdown
   {
     "HakonHarnes/img-clip.nvim",
+    cond = native_nvim,
     event = "VeryLazy",
     opts = {
       default = {

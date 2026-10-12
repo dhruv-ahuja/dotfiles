@@ -9,8 +9,16 @@ vim.filetype.add({
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
+  pattern = { "markdown", "mdx" },
   callback = function()
+    -- VS Code renders the buffer itself. Concealment and terminal-oriented
+    -- Markdown UI plugins can desynchronise its screen cells while editing.
+    if vim.g.vscode then
+      vim.opt_local.conceallevel = 0
+      vim.opt_local.concealcursor = ""
+      return
+    end
+
     -- Soft wrap for prose (wrap at word boundaries)
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true

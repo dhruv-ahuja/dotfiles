@@ -3,10 +3,6 @@
 
 local opt = vim.opt
 
--- Line numbers
-opt.number = true
-opt.relativenumber = true
-
 -- Search settings
 opt.ignorecase = true
 opt.smartcase = true
@@ -22,15 +18,19 @@ opt.shiftwidth = 2          -- Indent size
 opt.tabstop = 2             -- Tab size
 opt.smartindent = true      -- Smart autoindenting
 
-opt.termguicolors = true    -- Enable 24-bit RGB colors
-opt.cursorline = true       -- Highlight current line
-opt.signcolumn = "yes"      -- Always show sign column
-
-opt.mouse = "a"             -- Enable mouse support
 opt.undofile = true         -- Persistent undo
-opt.scrolloff = 8           -- Keep 8 lines above/below cursor
-opt.sidescrolloff = 8       -- Keep 8 columns left/right of cursor
 
--- Split behavior
-opt.splitright = true       -- Vertical splits go right
-opt.splitbelow = true       -- Horizontal splits go below
+-- VS Code owns display, scrolling, mouse, and window layout when Neovim is
+-- embedded by VSCode-Neovim. Keep these UI options native-Neovim-only.
+if not vim.g.vscode then
+  opt.number = true
+  opt.relativenumber = true
+  opt.termguicolors = true
+  opt.cursorline = true
+  opt.signcolumn = "yes"
+  opt.mouse = "a"
+  opt.scrolloff = 8
+  opt.sidescrolloff = 8
+  opt.splitright = true
+  opt.splitbelow = true
+end
